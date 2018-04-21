@@ -31,11 +31,11 @@ class _TwitterFeedWidgetState extends State<TwitterFeedWidget> {
   Widget build(BuildContext context) {
     if (data == null) {
       return new Center(
-            child: new CircularProgressIndicator(),
-          );
+        child: new CircularProgressIndicator(),
+      );
     } else {
       return new Center(
-          child: new TwitterRenderer().render(data),
+        child: new TwitterRenderer().render(data),
       );
     }
   }
