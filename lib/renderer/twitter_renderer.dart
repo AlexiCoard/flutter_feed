@@ -1,27 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class TwitterRenderer {
-
   TwitterRenderer();
 
-  Widget render (List data) {
+  _launchTwitterURL(String tweetId) async {
+    var fullURL = 'https://twitter.com/statuses/$tweetId';
 
-    List<Widget> renderedWidgets = new List<Widget>();
+    if (await canLaunch(fullURL)) {
+      await launch(fullURL);
+    } else {
+      throw 'Could not launch $fullURL';
+    }
+  }
 
-    data.forEach((element) {
-      print('rendering a list item');
-      print(element);
-      print(element["user"]);
-      renderedWidgets.add(new ListTile(
-        title: new Text(element["user"]["name"]),
-        subtitle: new Text(element["text"]),
-        leading: new Image.network(element["user"]["profile_image_url_https"]),
-        isThreeLine: true,
-      ));
-    });
-    var lv = new ListView(
-      children: renderedWidgets,
+  Widget render(List data) {
+    return new ListView(
+      children: data
+          .map((tweet) => new ListTile(
+                title: new Text(tweet["user"]["name"]),
+                subtitle: new Text(tweet["text"]),
+                leading:
+                    new Image.network(tweet["user"]["profile_image_url_https"]),
+                isThreeLine: true,
+                onTap: () => _launchTwitterURL(tweet["id_str"]),
+              ))
+          .toList(),
     );
-    return lv;
   }
 }
