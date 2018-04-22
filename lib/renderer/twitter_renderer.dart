@@ -19,7 +19,28 @@ class TwitterRenderer {
       children: data
           .map((tweet) => new ListTile(
                 title: new Text(tweet["user"]["name"]),
-                subtitle: new Text(tweet["text"]),
+                subtitle: new Column(
+                  children: <Widget>[
+                    new Text(tweet["text"]),
+                    new Divider(),
+                    new Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        new Row(children: <Widget>[
+                          new Text("${tweet['retweet_count']}"),
+                          //TODO : use this when Flutter will support svg new Image.asset("assets/retweet.svg"),
+                          new Icon(Icons.autorenew),
+                        ]),
+                        new Row(
+                          children: <Widget>[
+                            new Text("${tweet['favorite_count']}"),
+                            new Icon(Icons.favorite_border),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
                 leading:
                     new Image.network(tweet["user"]["profile_image_url_https"]),
                 isThreeLine: true,
