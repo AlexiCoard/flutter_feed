@@ -13,12 +13,34 @@ class TwitterTile extends StatefulWidget {
 class _TwitterTileState extends State<TwitterTile> {
   @override
   Widget build(BuildContext context) {
-    print(widget.tweet.runtimeType);
+    List<Widget> tweetContent = [
+      Text(widget.tweet['text']),
+    ];
+
+    //If tweet contains images, add them
+    if (widget.tweet["entities"].containsKey("media")) {
+      var tweetImages = widget.tweet["entities"]["media"];
+      var numberOfImagePerRow =
+          tweetImages.length <= 3 ? tweetImages.length : 2;
+      List<Widget> images = List<Widget>();
+      tweetImages.forEach(
+          (image) => images.add(Image.network(image['media_url_https'])));
+      tweetContent.add(Container(
+        height: 150.0,
+        child: GridView.count(
+          crossAxisCount: numberOfImagePerRow,
+          children: images,
+        ),
+      ));
+    }
+
     return ListTile(
       title: Text(widget.tweet["user"]["name"]),
       subtitle: Column(
         children: <Widget>[
-          Text(widget.tweet["text"]),
+          Column(
+            children: tweetContent,
+          ),
           Divider(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
