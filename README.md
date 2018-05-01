@@ -6,8 +6,8 @@ Flutter feed generator - A bunch of widgets to build feeds
 ## TODO
 
  - Do we keep the abstract feed interface ?
- - Twitter feed todo : add images if contains, border between tweets
- - Load credentials from file (inject in constructor ?)
+ - Twitter feed todo : better images ? better border between tweets ?
+ - Load credentials from file (inject in constructor, env var ?)
  - More feeds : Medium, other ?
  - ~~Make some real widget~~
  - Maybe a package containing all feeds and a generic class to extends ?
