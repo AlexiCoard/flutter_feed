@@ -61,9 +61,9 @@ class _TwitterTileState extends State<TwitterTile> {
         ],
       ),
       leading: CircleAvatar(
-        backgroundImage: NetworkImage(widget.tweet["user"]["profile_image_url_https"]),
+        backgroundImage:
+            NetworkImage(widget.tweet["user"]["profile_image_url_https"]),
       ),
-
       isThreeLine: true,
       onTap: () => _launchTwitterURL(widget.tweet["id_str"]),
     );
