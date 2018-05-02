@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feed/feed/twitter_feed.dart';
 
 void main() {
-  runApp(new MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'async demo'),
+      home: MyHomePage(title: 'Feeds !'),
     );
   }
 }
@@ -33,11 +33,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Feeds ! "),
+        title: Text(widget.title),
       ),
-      body: Center(
-          child: TwitterFeedWidget()
-      ),
+      body: Center(child: TwitterFeedWidget()),
     );
   }
 }
