@@ -34,38 +34,67 @@ class _TwitterTileState extends State<TwitterTile> {
       ));
     }
 
-    return ListTile(
-      title: Text(widget.tweet["user"]["name"]),
-      subtitle: Column(
-        children: <Widget>[
-          Column(
-            children: tweetContent,
-          ),
-          Divider(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Row(children: <Widget>[
-                Text("${widget.tweet['retweet_count']}"),
-                //TODO : use this when Flutter will support svg new Image.asset("assets/retweet.svg"),
-                Icon(Icons.autorenew),
-              ]),
-              Row(
-                children: <Widget>[
-                  Text("${widget.tweet['favorite_count']}"),
-                  Icon(Icons.favorite_border),
-                ],
+    return Container(
+      margin: const EdgeInsets.all(5.0),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+          border: Border.all(color: Colors.blueAccent)),
+      child: ListTile(
+        title: Row(
+          children: <Widget>[
+            Text(
+              "${widget.tweet['user']['name']}",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Text(
+                "@${widget.tweet['user']['screen_name']}",
+                style: TextStyle(color: Colors.grey),
               ),
-            ],
-          ),
-        ],
+            ),
+          ],
+          mainAxisAlignment: MainAxisAlignment.start,
+        ),
+        subtitle: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
+              child: Column(
+                children: tweetContent,
+              ),
+            ),
+            Divider(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Row(children: <Widget>[
+                  Text("${widget.tweet['retweet_count']}"),
+                  //TODO : use this when Flutter will support svg new Image.asset("assets/retweet.svg"),
+                  Icon(Icons.autorenew),
+                ]),
+                Row(
+                  children: <Widget>[
+                    Text("${widget.tweet['favorite_count']}"),
+                    Icon(Icons.favorite_border),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+        leading: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              CircleAvatar(
+                backgroundImage: NetworkImage(
+                    widget.tweet["user"]["profile_image_url_https"]),
+              ),
+            ]),
+        isThreeLine: true,
+        onTap: () => _launchTwitterURL(widget.tweet["id_str"]),
       ),
-      leading: CircleAvatar(
-        backgroundImage:
-            NetworkImage(widget.tweet["user"]["profile_image_url_https"]),
-      ),
-      isThreeLine: true,
-      onTap: () => _launchTwitterURL(widget.tweet["id_str"]),
     );
   }
 }
