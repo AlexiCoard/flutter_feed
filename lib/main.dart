@@ -9,12 +9,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: 'Flutter demo',
-      theme: new ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new MyHomePage(title: 'async demo'),
+      home: MyHomePage(title: 'async demo'),
     );
   }
 }
@@ -25,18 +25,18 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Feeds ! "),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Feeds ! "),
       ),
-      body: new Center(
-          child: new TwitterFeedWidget()
+      body: Center(
+          child: TwitterFeedWidget()
       ),
     );
   }
