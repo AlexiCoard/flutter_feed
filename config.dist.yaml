@@ -1,6 +1,5 @@
-# Keys found on w3resources.com
-twitter:
-  consumer_key: foo
-  consumer_secret: bar
-  access_token: peanuts
-  access_token_secret: 123456
+twitterFeed:
+  consumerKey: foo
+  consumerSecret: bar
+  accessToken: peanuts
+  accessTokenSecret: spaghetti
