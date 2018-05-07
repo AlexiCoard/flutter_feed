@@ -19,6 +19,7 @@ twitterFeed:
 ```
 
 Twitter Feed - Overview
+
 <img src="img/twitter_feed.jpg" width="200">
 
 ## TODO
