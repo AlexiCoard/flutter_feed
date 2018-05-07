@@ -4,8 +4,9 @@ import 'package:flutter_feed/renderer/abstract_renderer.dart';
 import 'dart:async';
 
 class GenericFeed extends StatefulWidget {
-  GenericFeed(AbstractCollector collector, AbstractRenderer render) {
+  GenericFeed(AbstractCollector collector, AbstractRenderer renderer) {
     this.collector = collector;
+    this.renderer = renderer;
   }
 
   AbstractCollector collector;
@@ -16,7 +17,6 @@ class GenericFeed extends StatefulWidget {
 }
 
 class _GenericFeedState extends State<GenericFeed> {
-
   List data;
 
   Future<Null> _gatherData() async {

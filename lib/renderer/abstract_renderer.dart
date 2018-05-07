@@ -13,3 +13,9 @@ abstract class AbstractRenderer {
     );
   }
 }
+
+class ExampleRenderer extends AbstractRenderer {
+  Widget render (List data) {
+    return super.render(data);
+  }
+}
