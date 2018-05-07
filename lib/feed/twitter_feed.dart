@@ -18,6 +18,7 @@ class _TwitterFeedWidgetState extends State<TwitterFeedWidget> {
   initState() {
     super.initState();
 
+//    var collector = TwitterCollector.fromFile("config.yaml");
     var collector = TwitterCollector();
 
     collector.gather().then((value) {
