@@ -19,12 +19,12 @@ twitterFeed:
 ```
 
 Twitter Feed - Overview
-![Twitter_Feed](img/twitter_feed.jpg)
+
+<img src="img/twitter_feed.jpg" width="200">
 
 ## TODO
 
  - Do we keep the abstract feed interface ?
- - Twitter feed todo : better images ? Wrap this in refreshIndicator
  - More feeds : Medium, other ?
  - Maybe a package containing all feeds and a generic class to extends ?
 

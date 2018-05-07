@@ -1,6 +1,7 @@
 import 'package:flutter_feed/collector/twitter_collector.dart';
 import 'package:flutter_feed/renderer/twitter_renderer.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class TwitterFeedWidget extends StatefulWidget {
   TwitterFeedWidget({Key key, this.title}) : super(key: key);
@@ -12,32 +13,39 @@ class TwitterFeedWidget extends StatefulWidget {
 }
 
 class _TwitterFeedWidgetState extends State<TwitterFeedWidget> {
-  List data;
+  List tweets;
 
-  @override
-  initState() {
-    super.initState();
-
+  Future<Null> _gatherTweets() async {
     var collector = TwitterCollector.fromFile("config.yaml");
-    collector.getConfigCredentials().then((success) {
-      collector.gather().then((value) {
+    await collector.getConfigCredentials().then((success) {
+      collector.gather().then((response) {
         setState(() {
-          data = value;
+          tweets = response;
         });
       });
     });
 
+    return null;
+  }
+
+  @override
+  initState() {
+    super.initState();
+    _gatherTweets();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (data == null) {
+    if (tweets == null) {
       return Center(
         child: CircularProgressIndicator(),
       );
     } else {
       return Center(
-        child: TwitterRenderer().render(data),
+        child: RefreshIndicator(
+          child: TwitterRenderer().render(tweets),
+          onRefresh: () => _gatherTweets()
+        ),
       );
     }
   }
