@@ -6,6 +6,7 @@ dependencies:
     sdk: flutter
   twitter: 0.5.2
   url_launcher: ^3.0.0
+  yaml: any
 
 
   cupertino_icons: ^0.1.0
@@ -18,3 +19,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/retweet.svg
+    - config.yaml
