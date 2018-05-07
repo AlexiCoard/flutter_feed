@@ -1,8 +1,16 @@
 # flutter_feed
 
-Flutter feed generator - A bunch of widgets to build feeds
+Flutter feed generator - Generate some awesome feeds widgets using Flutter
 
-## The tweeter feed
+## Demo App
+
+This repo includes a repo app, if you download it and launch main.dart
+you will run a "Demo App" with all the feeds examples in the drawer
+
+/!\ Some Feeds require some configuration before you can run them 
+for example the Twitter Feed require a config.yaml file (See below section)
+
+## The twitter feed
 
 A feed to get user timeline given by its credentials
 
@@ -24,9 +32,8 @@ Twitter Feed - Overview
 
 ## TODO
 
- - Do we keep the abstract feed interface ?
- - More feeds : Medium, other ?
- - Maybe a package containing all feeds and a generic class to extends ?
+ - More feeds : Medium, Github ?
+ - Package and publish it to allow simple integration
 
 ## Author
 

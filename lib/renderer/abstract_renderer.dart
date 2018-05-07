@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
 
+///
+/// The Abstract Renderer widget is basically an abstract class to implement if
+/// you want to use the GenericFeed widget.
+///
+/// You need to implement the render method, which returns a Widget generated from
+/// your data, it can be a ListView, a Column, a GridView... whatever you want
+///
 abstract class AbstractRenderer {
   AbstractRenderer();
 
-  Widget render(dynamic data) {
-    List<Widget> renderedWidgets = new List<Widget>();
-
-    data.forEach((element) {
-      renderedWidgets.add(new ListTile(
-        title: new Text(element.toString()),
-      ));
-    });
-    var lv = new ListView(
-      children: renderedWidgets,
+  Widget render(List data) {
+    return ListView(
+      children: data
+          .map((element) => ListTile(
+                title: Text(element.toString()),
+              ))
+          .toList(),
     );
-    return lv;
+  }
+}
+
+class ExampleRenderer extends AbstractRenderer {
+  Widget render (List data) {
+    return super.render(data);
   }
 }
