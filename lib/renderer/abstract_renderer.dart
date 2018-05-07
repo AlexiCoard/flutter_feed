@@ -3,17 +3,13 @@ import 'package:flutter/material.dart';
 abstract class AbstractRenderer {
   AbstractRenderer();
 
-  Widget render(dynamic data) {
-    List<Widget> renderedWidgets = new List<Widget>();
-
-    data.forEach((element) {
-      renderedWidgets.add(new ListTile(
-        title: new Text(element.toString()),
-      ));
-    });
-    var lv = new ListView(
-      children: renderedWidgets,
+  Widget render(List data) {
+    return ListView(
+      children: data
+          .map((element) => ListTile(
+                title: Text(element.toString()),
+              ))
+          .toList(),
     );
-    return lv;
   }
 }

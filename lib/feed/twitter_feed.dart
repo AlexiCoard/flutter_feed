@@ -43,9 +43,8 @@ class _TwitterFeedWidgetState extends State<TwitterFeedWidget> {
     } else {
       return Center(
         child: RefreshIndicator(
-          child: TwitterRenderer().render(tweets),
-          onRefresh: () => _gatherTweets()
-        ),
+            child: TwitterRenderer().render(tweets),
+            onRefresh: () => _gatherTweets()),
       );
     }
   }
