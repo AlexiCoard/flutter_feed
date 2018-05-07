@@ -1,0 +1,5 @@
+twitterFeed:
+  consumerKey: foo
+  consumerSecret: bar
+  accessToken: peanuts
+  accessTokenSecret: spaghetti

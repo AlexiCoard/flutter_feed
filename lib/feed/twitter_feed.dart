@@ -8,7 +8,7 @@ class TwitterFeedWidget extends StatefulWidget {
   final String title;
 
   @override
-  _TwitterFeedWidgetState createState() => new _TwitterFeedWidgetState();
+  _TwitterFeedWidgetState createState() => _TwitterFeedWidgetState();
 }
 
 class _TwitterFeedWidgetState extends State<TwitterFeedWidget> {
@@ -18,24 +18,26 @@ class _TwitterFeedWidgetState extends State<TwitterFeedWidget> {
   initState() {
     super.initState();
 
-    var collector = new TwitterCollector();
-
-    collector.gather().then((value) {
-      setState(() {
-        data = value;
+    var collector = TwitterCollector.fromFile("config.yaml");
+    collector.getConfigCredentials().then((success) {
+      collector.gather().then((value) {
+        setState(() {
+          data = value;
+        });
       });
     });
+
   }
 
   @override
   Widget build(BuildContext context) {
     if (data == null) {
-      return new Center(
-        child: new CircularProgressIndicator(),
+      return Center(
+        child: CircularProgressIndicator(),
       );
     } else {
-      return new Center(
-        child: new TwitterRenderer().render(data),
+      return Center(
+        child: TwitterRenderer().render(data),
       );
     }
   }
