@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 class TwitterFeedWidget extends StatefulWidget {
-  TwitterFeedWidget({Key key, this.title}) : super(key: key);
-
-  final String title;
+  TwitterFeedWidget({this.query: 'statuses/user_timeline.json'});
+  final String query;
 
   @override
   _TwitterFeedWidgetState createState() => _TwitterFeedWidgetState();
@@ -16,7 +15,7 @@ class _TwitterFeedWidgetState extends State<TwitterFeedWidget> {
   List tweets;
 
   Future<Null> _gatherTweets() async {
-    var collector = TwitterCollector.fromFile("config.yaml");
+    var collector = TwitterCollector.fromFile("config.yaml", widget.query);
     await collector.getConfigCredentials().then((success) {
       collector.gather().then((response) {
         setState(() {
