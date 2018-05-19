@@ -31,6 +31,22 @@ And instanciate your twitter feed widget
 
 ``TwitterFeedWidget()``
 
+By default, the query value is ``statuses/user_timeline.json``,
+this will display your timeline (if you use your own credentials) ! 
+So basically, the timeline of the account to which the credentials belong.
+
+If you want, you can override this default value and display, let's say
+another user feed : for example Chuck Norris. To do this, simply add the named
+parameter like this
+
+```
+TwitterFeedWidget(
+  query: "statuses/user_timeline.json?screen_name=chucknorris"
+),
+```
+
+Be carefoul though, some basic credentials might not be enough to display everything.
+
 Twitter Feed - Overview
 
 <img src="img/twitter_feed.jpg" width="200">
