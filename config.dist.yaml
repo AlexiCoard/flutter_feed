@@ -3,3 +3,6 @@ twitterFeed:
   consumerSecret: bar
   accessToken: peanuts
   accessTokenSecret: spaghetti
+
+medium:
+  bearer: foo
