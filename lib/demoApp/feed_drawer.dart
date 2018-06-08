@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feed/demoApp/generic_feed_page.dart';
 import 'package:flutter_feed/demoApp/twitter_feed_page.dart';
+import 'package:flutter_feed/demoApp/medium_feed_page.dart';
 
 class FeedDrawer extends StatefulWidget {
   FeedDrawer();
@@ -32,6 +33,14 @@ class _FeedDrawerState extends State<FeedDrawer> {
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => TwitterFeedPage()));
+            },
+          ),
+          Divider(),
+          ListTile(
+            title: Text('Medium Feed'),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MediumFeedPage()));
             },
           ),
         ],
