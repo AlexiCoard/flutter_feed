@@ -2,6 +2,16 @@
 
 Flutter feed generator - Generate some awesome feeds widgets using Flutter
 
+## Installing
+
+Add this in your pubspec.yaml file
+
+```
+dependencies:
+  flutter_feed:
+    git: git://github.com/alexicoard/flutter_feed.git
+```
+
 ## Demo App
 
 This repo includes a repo app, if you download it and launch main.dart
@@ -42,14 +52,37 @@ parameter like this
 ```
 TwitterFeedWidget(
   query: "statuses/user_timeline.json?screen_name=chucknorris"
-),
+);
 ```
 
 Be carefoul though, some basic credentials might not be enough to display everything.
 
+If you only need to query the data and use you own widget / collector
+you can simply instantiate a `TwitterFeedCollector` 
+
 Twitter Feed - Overview
 
 <img src="img/twitter_feed.jpg" width="200">
+
+## The Medium Feed
+
+Based on the same structure, but a lot simpler than the Twitter one...
+The API doesn't provide as much details as we would like (for example all the user claps
+or the amount of clap for each post).
+
+Create a MediumFeedWidget like this
+
+```
+MediumFeedWidget(
+  query : '/users/{userHash}/publications'
+);
+```
+
+Same as Twitter one, the collector and renderer can be created as standalone
+
+Medium Feed - Overview
+
+<img src="img/medium_feed.jpg" width="200">
 
 
 ## The Generic Feed
@@ -75,7 +108,7 @@ GenericFeed(MyCollector(), MyRenderer())
 
 ## TODO
 
- - More feeds : Medium, Github ?
+ - More feeds : Github ?
  - Package and publish it to allow simple integration
 
 ## Author
