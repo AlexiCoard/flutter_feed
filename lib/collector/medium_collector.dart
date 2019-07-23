@@ -37,10 +37,10 @@ class MediumCollector implements AbstractCollector {
     var response = await http.get(
       url,
       headers: {
-        HttpHeaders.AUTHORIZATION: "Bearer " + this._bearer,
-        HttpHeaders.CONTENT_TYPE: 'application/json',
-        HttpHeaders.ACCEPT: 'application/json',
-        HttpHeaders.ACCEPT_CHARSET: 'utf-8',
+        HttpHeaders.authorizationHeader: "Bearer " + this._bearer,
+        HttpHeaders.contentTypeHeader: 'application/json',
+        HttpHeaders.acceptHeader: 'application/json',
+        HttpHeaders.acceptCharsetHeader: 'utf-8',
       },
     );
 
